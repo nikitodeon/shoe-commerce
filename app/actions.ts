@@ -2,8 +2,8 @@
 
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { redirect } from "next/navigation";
-// import { parseWithZod } from "@conform-to/zod";
-// import { bannerSchema, productSchema } from "./lib/zodSchemas";
+import { parseWithZod } from "@conform-to/zod";
+import { bannerSchema, productSchema } from "./lib/zodSchemas";
 import prisma from "./lib/db";
 // import { redis } from "./lib/redis";
 // import { Cart } from "./lib/interfaces";
@@ -15,7 +15,7 @@ export async function createProduct(prevState: unknown, formData: FormData) {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
 
-  if (!user || user.email !== "jan@alenix.de") {
+  if (!user || user.email !== "ragerage333@gmail.com") {
     return redirect("/");
   }
 

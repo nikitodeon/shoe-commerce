@@ -1,4 +1,4 @@
-// import prisma from "@/app/lib/db";
+import prisma from "@/app/lib/db";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -28,19 +28,19 @@ import Image from "next/image";
 import Link from "next/link";
 import { unstable_noStore as noStore } from "next/cache";
 
-// async function getData() {
-//   const data = await prisma.product.findMany({
-//     orderBy: {
-//       createdAt: "desc",
-//     },
-//   });
+async function getData() {
+  const data = await prisma.product.findMany({
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
 
-//   return data;
-// }
+  return data;
+}
 
 export default async function ProductsRoute() {
   //   noStore();
-  //   const data = await getData();
+  const data = await getData();
   return (
     <>
       <div className="flex items-center justify-end">
@@ -71,7 +71,7 @@ export default async function ProductsRoute() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {/* {data.map((item) => (
+              {data.map((item) => (
                 <TableRow key={item.id}>
                   <TableCell>
                     <Image
@@ -112,7 +112,7 @@ export default async function ProductsRoute() {
                     </DropdownMenu>
                   </TableCell>
                 </TableRow>
-              ))} */}
+              ))}
             </TableBody>
           </Table>
         </CardContent>

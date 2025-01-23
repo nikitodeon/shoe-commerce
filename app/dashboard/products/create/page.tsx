@@ -1,6 +1,6 @@
 "use client";
 
-// import { createProduct } from "@/app/actions";
+import { createProduct } from "@/app/actions";
 import { UploadDropzone } from "@/app/lib/uploadthing";
 import { Button } from "@/components/ui/button";
 import {
@@ -11,50 +11,49 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-// import { Input } from "@/components/ui/input";
-// import { Label } from "@/components/ui/label";
-// import {
-//   Select,
-//   SelectContent,
-//   SelectItem,
-//   SelectTrigger,
-//   SelectValue,
-// } from "@/components/ui/select";
-// import { Switch } from "@/components/ui/switch";
-// import { Textarea } from "@/components/ui/textarea";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Switch } from "@/components/ui/switch";
+import { Textarea } from "@/components/ui/textarea";
 import { ChevronLeft, XIcon } from "lucide-react";
 import Link from "next/link";
-import { useFormState } from "react-dom";
-// import { useForm } from "@conform-to/react";
-// import { parseWithZod } from "@conform-to/zod";
-// import { productSchema } from "@/app/lib/zodSchemas";
+import { useActionState } from "react";
+import { useForm } from "@conform-to/react";
+import { parseWithZod } from "@conform-to/zod";
+import { productSchema } from "@/app/lib/zodSchemas";
 import { useState } from "react";
 
 import Image from "next/image";
-// import { categories } from "@/app/lib/categories";
-// import { SubmitButton } from "@/app/components/SubmitButtons";
+import { categories } from "@/app/lib/categories";
+import { SubmitButton } from "@/app/components/SubmitButtons";
 
 export default function ProductCreateRoute() {
   const [images, setImages] = useState<string[]>([]);
-  //   const [lastResult, action] = useFormState(createProduct, undefined);
-  //   const [form, fields] = useForm({
-  //     lastResult,
+  const [lastResult, action] = useActionState(createProduct, undefined);
+  const [form, fields] = useForm({
+    lastResult,
 
-  //     onValidate({ formData }) {
-  //       return parseWithZod(formData, { schema: productSchema });
-  //     },
+    onValidate({ formData }) {
+      return parseWithZod(formData, { schema: productSchema });
+    },
 
-  //     shouldValidate: "onBlur",
-  //     shouldRevalidate: "onInput",
-  //   });
+    shouldValidate: "onBlur",
+    shouldRevalidate: "onInput",
+  });
 
   const handleDelete = (index: number) => {
     setImages(images.filter((_, i) => i !== index));
   };
 
   return (
-    <div>
-      {/* <form id={form.id} onSubmit={form.onSubmit} action={action}>
+    <form id={form.id} onSubmit={form.onSubmit} action={action}>
       <div className="flex items-center gap-4">
         <Button variant="outline" size="icon" asChild>
           <Link href="/dashboard/products">
@@ -190,17 +189,17 @@ export default function ProductCreateRoute() {
                     </div>
                   ))}
                 </div>
-              ) : ( */}
-      <UploadDropzone
-        endpoint="imageUploader"
-        // onClientUploadComplete={(res) => {
-        //   setImages(res.map((r) => r.url));
-        // }}
-        // onUploadError={() => {
-        //   alert("Something went wrong");
-        // }}
-      />
-      {/* )}
+              ) : (
+                <UploadDropzone
+                  endpoint="imageUploader"
+                  onClientUploadComplete={(res) => {
+                    setImages(res.map((r) => r.url));
+                  }}
+                  onUploadError={() => {
+                    alert("Something went wrong");
+                  }}
+                />
+              )}
 
               <p className="text-red-500">{fields.images.errors}</p>
             </div>
@@ -210,7 +209,6 @@ export default function ProductCreateRoute() {
           <SubmitButton text="Create Product" />
         </CardFooter>
       </Card>
-    </form> */}
-    </div>
+    </form>
   );
 }
