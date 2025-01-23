@@ -64,7 +64,7 @@ export default async function DashboardLayout({
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem asChild>
-              {/* <LogoutLink>Logout</LogoutLink> */}
+              <LogoutLink>Logout</LogoutLink>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
