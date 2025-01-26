@@ -17,13 +17,9 @@ const links = [
     name: "Products",
     href: "/dashboard/products",
   },
-  //   {
-  //     name: "Banner Picture",
-  //     href: "/dashboard/banner",
-  //   },
   {
-    name: "Categories",
-    href: "/dashboard/categories",
+    name: "Banner Picture",
+    href: "/dashboard/banner",
   },
 ];
 
