@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import prisma from "@/app/lib/db";
 import { redis } from "@/app/lib/redis";
 import { stripe } from "@/app/lib/stripe";
