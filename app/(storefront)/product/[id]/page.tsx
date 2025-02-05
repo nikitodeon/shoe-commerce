@@ -1,4 +1,4 @@
-// import { addItem } from "@/app/actions";
+import { addItem } from "@/app/actions";
 import { ShoppingBagButton } from "@/app/components/SubmitButtons";
 import { FeaturedProducts } from "@/app/components/storefront/FeaturedProducts";
 import { ImageSlider } from "@/app/components/storefront/ImageSlider";
@@ -36,7 +36,7 @@ export default async function ProductIdRoute({
 }) {
   noStore();
   const data = await getData(params.id);
-  //   const addProducttoShoppingCart = addItem.bind(null, data.id);
+  const addProducttoShoppingCart = addItem.bind(null, data.id);
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start lg:gap-x-24 py-6">
@@ -55,9 +55,7 @@ export default async function ProductIdRoute({
           </div>
           <p className="text-base text-gray-700 mt-6">{data.description}</p>
 
-          <form
-          //   action={addProducttoShoppingCart}
-          >
+          <form action={addProducttoShoppingCart}>
             <ShoppingBagButton />
           </form>
         </div>
