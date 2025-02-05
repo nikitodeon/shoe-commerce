@@ -93,7 +93,7 @@ async function getData(productCategory: string) {
 export default async function CategoriesPage({
   params,
 }: {
-  params: { name: string };
+  params: Awaited<{ name: string }>;
 }) {
   noStore();
   const { data, title } = await getData(params.name);

@@ -20,7 +20,7 @@ async function getData(productId: string) {
 export default async function EditRoute({
   params,
 }: {
-  params: { id: string };
+  params: Awaited<{ id: string }>;
 }) {
   //   noStore();
   const data = await getData(params.id);
